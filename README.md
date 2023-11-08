@@ -37,10 +37,11 @@ CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --nnodes 1 --nproc_per
 ## Test
 ```bash
 python test.py --config [CONFIG_PATH] --model [MODEL_PATH]
-```
+
 export CUDA_VISIBLE_DEVICES=2 
 python test.py --config configs/fusar-sar-map-sam-vit-b-5cls-ce-trainval_1024_lr2e4_CEv2_e200_ignore_bg.yaml --model ./save/fusar-sar-map-sam-vit-b-5cls-ce-trainval_1024_lr2e4_CEv2_e200_ignore_bg/model_epoch_best.pth
 
+```
 ## Citation
 
 If you find our work useful in your research, please consider citing:
