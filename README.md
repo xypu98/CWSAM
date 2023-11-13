@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ```
 
 ## Quick Start
-1. Download the dataset and put it in ./load.
+1. Prepare the dataset.
 2. Download the pre-trained [SAM(Segment Anything)](https://github.com/facebookresearch/segment-anything) and put it in ./pretrained.
 3. Training:
 ```bash
@@ -45,6 +45,7 @@ python test.py --config [CONFIG_PATH] --model [MODEL_PATH]
 
 export CUDA_VISIBLE_DEVICES=2 
 python test.py --config configs/fusar-sar-map-sam-vit-b-5cls-ce-trainval_1024_lr2e4_CEv2_e200_ignore_bg.yaml --model ./save/fusar-sar-map-sam-vit-b-5cls-ce-trainval_1024_lr2e4_CEv2_e200_ignore_bg/model_epoch_best.pth
+
 
 ```
 ## Citation
