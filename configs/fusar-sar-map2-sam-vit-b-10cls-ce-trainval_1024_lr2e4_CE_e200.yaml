@@ -1,0 +1,116 @@
+train_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      classes: ['water','woodland','vegetation','bare soil','industry','residence','road','paddy','planting','human built']
+      ignore_bg: false
+      palette: [[0, 0, 255],[0, 139, 0],[0, 255, 0],[139, 0, 0],[255, 0, 0],[205, 173, 0],[83, 134, 139],[0, 139, 139],[139, 105, 20],[189, 183, 107]]
+      root_path_1: /remote-home/pxy/data/FUSARMAP2/SAR/train
+      root_path_2: /remote-home/pxy/data/FUSARMAP2/LAB/train
+      cache: none
+      split_key: train
+  wrapper:
+    name: train
+    args:
+      inp_size: 1024
+      augment: false
+  batch_size: 1
+
+val_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      classes: ['water','woodland','vegetation','bare soil','industry','residence','road','paddy','planting','human built']
+      ignore_bg: false
+      palette: [[0, 0, 255],[0, 139, 0],[0, 255, 0],[139, 0, 0],[255, 0, 0],[205, 173, 0],[83, 134, 139],[0, 139, 139],[139, 105, 20],[189, 183, 107]]
+      root_path_1: /remote-home/pxy/data/FUSARMAP2/SAR/test
+      root_path_2: /remote-home/pxy/data/FUSARMAP2/LAB/test
+      cache: none
+      split_key: test
+  wrapper:
+    name: val
+    args:
+      inp_size: 1024
+  batch_size: 1
+
+test_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      classes: ['water','woodland','vegetation','bare soil','industry','residence','road','paddy','planting','human built']
+      ignore_bg: false
+      palette: [[0, 0, 255],[0, 139, 0],[0, 255, 0],[139, 0, 0],[255, 0, 0],[205, 173, 0],[83, 134, 139],[0, 139, 139],[139, 105, 20],[189, 183, 107]]
+      root_path_1: /remote-home/pxy/data/FUSARMAP2/SAR/test
+      root_path_2: /remote-home/pxy/data/FUSARMAP2/LAB/test
+      cache: none
+      split_key: test
+  wrapper:
+    name: val
+    args:
+      inp_size: 1024
+  batch_size: 1
+
+eval_type: seg
+sam_checkpoint: ./pretrained/sam_vit_b_01ec64.pth
+data_norm:
+  inp:
+    sub:
+    - 0.5
+    div:
+    - 0.5
+  gt:
+    sub:
+    - 0.5
+    div:
+    - 0.5
+  gt_rgb:
+    sub:
+    - 0.5
+    div:
+    - 0.5
+model:
+  name: sam
+  args:
+    num_classes: 10
+    inp_size: 1024
+    loss: iou
+    loss_weight : [0.4,1.6,0.4,1.6,1.0,0.5,1.5,1.7,1.4,0.9]
+    encoder_mode:
+      name: sam
+      img_size: 1024
+      mlp_ratio: 4
+      patch_size: 16
+      qkv_bias: true
+      use_rel_pos: true
+      window_size: 14
+      out_chans: 256
+      scale_factor: 32
+      input_type: fft
+      freq_nums: 0.25
+      prompt_type: highpass
+      prompt_embed_dim: 256
+      tuning_stage: 1234
+      handcrafted_tune: true
+      embedding_tune: true
+      adaptor: adaptor
+      embed_dim: 768
+      depth: 12
+      num_heads: 12
+      global_attn_indexes:
+      - 2
+      - 5
+      - 8
+      - 11
+optimizer:
+  name: adamw
+  args:
+    lr: 0.0002
+lr_min: 1.0e-7
+epoch_max: 200
+
+multi_step_lr:
+  milestones:
+  - 1
+  gamma: 0.1
+epoch_val: 1
+epoch_save: 1
