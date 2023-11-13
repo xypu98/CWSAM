@@ -17,7 +17,11 @@ pip install -r requirements.txt
 3. Training:
 ```bash
 
+<<<<<<< HEAD
 CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nnodes 1 --nproc_per_node 2 train.py --config [CONFIG_PATH]
+=======
+CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nnodes 1 --nproc_per_node 2 train.py --config configs/fusar-sar-map2-sam-vit-b-11cls-ce-trainval_1024_lr2e4_CEv2_e200_ignore_bg.yaml
+>>>>>>> 9aceeecf10d78414b87e2672da9eb86a58043035
 
 ```
 
@@ -32,11 +36,14 @@ python test.py --config [CONFIG_PATH] --model [MODEL_PATH]
 CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nnodes 1 --nproc_per_node 2 train.py --config [CONFIG_PATH]
 
 CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --nnodes 1 --nproc_per_node 1 train.py   --master_port='29600' --config [CONFIG_PATH]
+<<<<<<< HEAD
 
 CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nnodes 1 --nproc_per_node 2 train.py --config configs_git/fusar-sar-map2-sam-vit-b-10cls-ce-trainval_1024_lr2e4_CE_e200.yaml
 
 CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nnodes 1 --nproc_per_node 2 train.py --config configs_git/fusar-sar-map-sam-vit-b-5cls-ce-trainval_1024_lr2e4_CEv2_e200_ignore_bg.yaml
 
+=======
+>>>>>>> 9aceeecf10d78414b87e2672da9eb86a58043035
 ```
 
 ## Test
@@ -46,7 +53,10 @@ python test.py --config [CONFIG_PATH] --model [MODEL_PATH]
 export CUDA_VISIBLE_DEVICES=2 
 python test.py --config configs/fusar-sar-map-sam-vit-b-5cls-ce-trainval_1024_lr2e4_CEv2_e200_ignore_bg.yaml --model ./save/fusar-sar-map-sam-vit-b-5cls-ce-trainval_1024_lr2e4_CEv2_e200_ignore_bg/model_epoch_best.pth
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9aceeecf10d78414b87e2672da9eb86a58043035
 ```
 ## Citation
 
