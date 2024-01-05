@@ -52,6 +52,16 @@ python test.py --config configs/fusar-sar-map-sam-vit-b-5cls-ce-trainval_1024_lr
 
 If you find our work useful in your research, please consider citing:
 
+```
+@misc{pu2024classwisesamadapter,
+      title={ClassWise-SAM-Adapter: Parameter Efficient Fine-tuning Adapts Segment Anything to SAR Domain for Semantic Segmentation}, 
+      author={Xinyang Pu and Hecheng Jia and Linghao Zheng and Feng Wang and Feng Xu},
+      year={2024},
+      eprint={2401.02326},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
 
 ## Acknowledgements
 The part of the code is derived from SAM-adapter: <a href='https://www.kokoni3d.com/'> KOKONI, Moxin Technology (Huzhou) Co., LTD </a>, Zhejiang University, Singapore University of Technology and Design, Huzhou University, Beihang University. <a href='https://tianrun-chen.github.io/SAM-Adaptor/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> 
